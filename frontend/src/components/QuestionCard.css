@@ -1,0 +1,117 @@
+.question-card {
+  padding: 0;
+  overflow: hidden;
+  animation: fadeInUp 0.4s ease;
+}
+
+.question-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-lg) var(--space-xl);
+  cursor: pointer;
+  transition: background var(--transition-base);
+}
+
+.question-card-header:hover {
+  background: var(--bg-secondary);
+}
+
+.question-card-number {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.question-card-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.question-card-text {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-bottom: var(--space-sm);
+}
+
+.question-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.question-card-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.question-score {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+.toggle-icon {
+  font-size: 10px;
+  color: var(--text-dim);
+  transition: transform var(--transition-base);
+}
+
+.question-card-body {
+  padding: 0 var(--space-xl) var(--space-xl);
+  animation: fadeIn 0.3s ease;
+}
+
+.question-answer-input {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.question-result {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.answer-section,
+.feedback-section {
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+}
+
+.answer-label,
+.feedback-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.answer-text,
+.feedback-text {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.feedback-section {
+  border-left: 3px solid var(--accent-teal);
+}
+
+.question-card-submitted {
+  opacity: 0.95;
+}
