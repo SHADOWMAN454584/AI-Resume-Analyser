@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Area, AreaChart } from 'recharts';
 import { dashboardAPI } from '../api/api';
 import StatsCard from '../components/StatsCard';
@@ -51,6 +51,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 
 export default function Dashboard() {
+  const navigate = useNavigate();
   const [stats, setStats] = useState(defaultStats);
   const [skills, setSkills] = useState(defaultSkills);
   const [progress, setProgress] = useState(defaultProgress);
@@ -119,7 +120,76 @@ export default function Dashboard() {
         <StatsCard icon="💻" label="Coding Tests" value={stats.coding_tests || 0} trend="up" trendValue="+1" />
       </div>
 
-      {/* Charts Row */}
+      {/* Latest Resume ATS Score Card */}
+      {latestResume && (
+        <div className="latest-resume-banner glass-card-static">
+          <div className="latest-resume-content">
+            <div className="latest-resume-info">
+              <h3 className="latest-resume-title">📄 Latest Resume</h3>
+              <p className="latest-resume-filename">{latestResume.original_filename}</p>
+              
+              <div className="latest-resume-stats">
+                <div className="resume-stat-item">
+                  <span className="resume-stat-label">File:</span>
+                  <span className="resume-stat-value">{latestResume.original_filename || 'Unknown'}</span>
+                </div>
+                {latestResume.analysis?.word_count && (
+                  <div className="resume-stat-item">
+                    <span className="resume-stat-label">Words:</span>
+                    <span className="resume-stat-value">{latestResume.analysis.word_count}</span>
+                  </div>
+                )}
+                {latestResume.analysis?.skill_count && (
+                  <div className="resume-stat-item">
+                    <span className="resume-stat-label">Skills:</span>
+                    <span className="resume-stat-value">{latestResume.analysis.skill_count}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="latest-resume-score-container">
+              <div className="ats-score-circle">
+                <svg className="score-circle-svg" viewBox="0 0 120 120">
+                  <circle cx="60" cy="60" r="55" className="score-circle-bg" />
+                  <circle
+                    cx="60"
+                    cy="60"
+                    r="55"
+                    className="score-circle-fill"
+                    style={{
+                      strokeDasharray: `${(latestResume.ats_score || 0) * 3.456} 345.6`,
+                    }}
+                  />
+                </svg>
+                <div className="score-text">
+                  <span className="score-number">{latestResume.ats_score || 0}</span>
+                  <span className="score-percent">%</span>
+                </div>
+              </div>
+              <p className="score-label">ATS Score</p>
+              <p className="score-description">
+                {latestResume.ats_score >= 80 ? '✨ Excellent! Ready to apply.' :
+                 latestResume.ats_score >= 60 ? '👍 Good score. Minor improvements needed.' :
+                 latestResume.ats_score >= 40 ? '⚠️ Fair score. Follow recommendations.' :
+                 '❌ Needs improvement. Review suggestions.'}
+              </p>
+            </div>
+          </div>
+
+          <div className="latest-resume-actions">
+            <button 
+              className="btn btn-primary btn-lg"
+              onClick={() => navigate(`/analysis/${latestResume.id}`)}
+            >
+              View Full Analysis →
+            </button>
+            <Link to="/upload" className="btn btn-secondary btn-lg">
+              Upload New Resume
+            </Link>
+          </div>
+        </div>
+      )}
       <div className="dashboard-charts-grid">
         {/* ATS Score Trend */}
         <div className="dashboard-chart-card glass-card-static">
