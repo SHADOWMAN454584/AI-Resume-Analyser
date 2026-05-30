@@ -90,6 +90,15 @@
   font-family: var(--font-mono);
 }
 
+/* AI Analysis */
+.analysis-ai-section {
+  padding: var(--space-2xl);
+}
+
+.analysis-ai-section h3 {
+  margin-bottom: var(--space-lg);
+}
+
 /* Skills */
 .analysis-skills-section {
   padding: var(--space-xl);

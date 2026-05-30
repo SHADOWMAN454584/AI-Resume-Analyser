@@ -206,35 +206,33 @@ export default function ResumeAnalysis() {
           <h3 className="analysis-section-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontSize: '1.2rem' }}>✨</span> AI Candidate Analysis
           </h3>
-          <div style={{ marginBottom: '1rem' }}>
-            <p className="text-secondary" style={{ fontStyle: 'italic' }}>
-              "{analysisData.ai_insights.candidate_summary}"
-            </p>
-          </div>
+          <p className="text-secondary" style={{ fontStyle: 'italic', marginBottom: 'var(--space-lg)' }}>
+            "{analysisData.ai_insights.candidate_summary}"
+          </p>
           
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.5rem' }}>
-            <div style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
-              <h4 style={{ color: 'var(--color-success)', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: '600' }}>Key Strengths</h4>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-lg)', marginBottom: 'var(--space-2xl)' }}>
+            <div style={{ background: 'var(--bg-secondary)', padding: 'var(--space-lg)', borderRadius: 'var(--radius-md)' }}>
+              <h4 style={{ color: 'var(--color-success)', marginBottom: 'var(--space-md)', fontSize: '0.9rem', fontWeight: '600' }}>Key Strengths</h4>
               <ul style={{ paddingLeft: '1.2rem', margin: 0, fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
                 {analysisData.ai_insights.key_strengths?.map((strength, i) => (
-                  <li key={i} style={{ marginBottom: '0.25rem' }}>{strength}</li>
+                  <li key={i} style={{ marginBottom: 'var(--space-sm)' }}>{strength}</li>
                 ))}
               </ul>
             </div>
             
-            <div style={{ background: 'var(--bg-secondary)', padding: '1rem', borderRadius: 'var(--radius-md)' }}>
-              <h4 style={{ color: 'var(--accent-orange)', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: '600' }}>Areas for Improvement</h4>
+            <div style={{ background: 'var(--bg-secondary)', padding: 'var(--space-lg)', borderRadius: 'var(--radius-md)' }}>
+              <h4 style={{ color: 'var(--accent-orange)', marginBottom: 'var(--space-md)', fontSize: '0.9rem', fontWeight: '600' }}>Areas for Improvement</h4>
               <ul style={{ paddingLeft: '1.2rem', margin: 0, fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
                 {analysisData.ai_insights.areas_for_improvement?.map((area, i) => (
-                  <li key={i} style={{ marginBottom: '0.25rem' }}>{area}</li>
+                  <li key={i} style={{ marginBottom: 'var(--space-sm)' }}>{area}</li>
                 ))}
               </ul>
             </div>
           </div>
           
-          <div style={{ paddingTop: '1rem', borderTop: '1px solid var(--border-subtle)' }}>
-            <h4 style={{ color: 'var(--text-primary)', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: '600' }}>💡 AI Recommendation</h4>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
+          <div style={{ paddingTop: 'var(--space-lg)', borderTop: '1px solid var(--border-subtle)' }}>
+            <h4 style={{ color: 'var(--text-primary)', marginBottom: 'var(--space-md)', fontSize: '0.9rem', fontWeight: '600' }}>💡 AI Recommendation</h4>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
               {analysisData.ai_insights.ai_recommendation}
             </p>
           </div>
