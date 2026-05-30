@@ -33,7 +33,12 @@ export default function Login() {
       await login(email, password);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || err.response?.data?.error || 'Login failed. Please check your credentials.');
+      const data = err.response?.data;
+      if (data?.details && Array.isArray(data.details)) {
+        setError(data.details.join(' '));
+      } else {
+        setError(data?.message || data?.error || 'Login failed. Please check your credentials.');
+      }
     } finally {
       setLoading(false);
     }

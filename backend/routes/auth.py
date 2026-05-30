@@ -25,10 +25,10 @@ def register():
     errors = []
     if not username or len(username) < 3:
         errors.append('Username must be at least 3 characters.')
-    if len(username) > 80:
+    elif len(username) > 80:
         errors.append('Username must be at most 80 characters.')
-    if not re.match(r'^[a-zA-Z0-9_]+$', username):
-        errors.append('Username may only contain letters, numbers, and underscores.')
+    elif not re.match(r'^[a-zA-Z0-9_.\-]+$', username):
+        errors.append('Username may only contain letters, numbers, underscores, dots, and hyphens.')
 
     if not email:
         errors.append('Email is required.')
@@ -39,7 +39,7 @@ def register():
         errors.append('Password must be at least 6 characters.')
 
     if errors:
-        return jsonify({'error': 'Validation failed', 'details': errors}), 400
+        return jsonify({'error': '; '.join(errors), 'details': errors}), 400
 
     # --- Uniqueness check ---
     if User.query.filter_by(username=username).first():

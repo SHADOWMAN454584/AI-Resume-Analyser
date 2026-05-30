@@ -57,7 +57,12 @@ export default function Register() {
       await register(username, email, password);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || err.response?.data?.error || 'Registration failed. Please try again.');
+      const data = err.response?.data;
+      if (data?.details && Array.isArray(data.details)) {
+        setError(data.details.join(' '));
+      } else {
+        setError(data?.message || data?.error || 'Registration failed. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
