@@ -9,6 +9,7 @@ An intelligent platform that helps professionals optimize their resumes and prep
 - **ATS Score Calculation**: Get your Applicant Tracking System compatibility score (0-100)
 - **Detailed Breakdown**: Contact information, formatting, keywords, experience, and education scores
 - **Skill Extraction**: Automatically detect and categorize 300+ technical skills using spaCy NLP
+- **Job Matching**: Compare your resume against specific job descriptions for match percentages and gap analysis
 - **Actionable Recommendations**: AI-generated improvement suggestions specific to your resume
 
 ### 🎤 Mock Interview
@@ -216,6 +217,7 @@ npm run build
 - `POST /api/resume/upload` - Upload and analyze resume (PDF)
 - `GET /api/resume/list` - List all user resumes
 - `GET /api/resume/<id>` - Get resume details with analysis
+- `POST /api/resume/match-job` - Match resume against a job description
 - `DELETE /api/resume/<id>` - Delete resume
 
 ### Dashboard
@@ -234,6 +236,7 @@ npm run build
 - AI-powered resume analysis with Groq API
 - Skill extraction (300+ skills database)
 - ATS score calculation with breakdown
+- Job matching with gap analysis and role suggestions
 - Dashboard with statistics and analytics
 - Resume history and management
 - Responsive UI with modern design
