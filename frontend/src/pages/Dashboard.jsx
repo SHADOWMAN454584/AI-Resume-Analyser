@@ -10,8 +10,6 @@ const CHART_COLORS = ['#06b6d4', '#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#e
 const defaultStats = {
   total_resumes: 0,
   avg_ats_score: 0,
-  interviews_done: 0,
-  coding_tests: 0,
 };
 
 const defaultProgress = [
@@ -33,8 +31,6 @@ const defaultSkills = [
 
 const recentActivity = [
   { icon: '📄', text: 'Resume uploaded and analyzed', time: '2 min ago', color: 'var(--accent-cyan)' },
-  { icon: '🎤', text: 'Completed mock interview (85/100)', time: '1 hour ago', color: 'var(--accent-purple)' },
-  { icon: '💻', text: 'Solved "Two Sum" coding problem', time: '3 hours ago', color: 'var(--color-success)' },
   { icon: '📊', text: 'ATS score improved to 78%', time: 'Yesterday', color: 'var(--accent-blue)' },
 ];
 
@@ -71,12 +67,9 @@ export default function Dashboard() {
 
         if (statsRes.status === 'fulfilled') {
           const statsData = statsRes.value.data?.stats || statsRes.value.data || defaultStats;
-          // Map backend naming to frontend naming
           setStats({
             total_resumes: statsData.total_resumes,
             avg_ats_score: statsData.avg_ats_score,
-            interviews_done: statsData.total_interviews,
-            coding_tests: statsData.total_coding_tests,
           });
         }
         
@@ -116,8 +109,6 @@ export default function Dashboard() {
       <div className="dashboard-stats-grid">
         <StatsCard icon="📄" label="Total Resumes" value={stats.total_resumes || 0} trend="up" trendValue="+3" />
         <StatsCard icon="🎯" label="Avg ATS Score" value={stats.avg_ats_score || 0} suffix="%" trend="up" trendValue="+5%" />
-        <StatsCard icon="🎤" label="Interviews Done" value={stats.interviews_done || 0} trend="up" trendValue="+2" />
-        <StatsCard icon="💻" label="Coding Tests" value={stats.coding_tests || 0} trend="up" trendValue="+1" />
       </div>
 
       {/* Latest Resume ATS Score Card */}
@@ -352,16 +343,6 @@ export default function Dashboard() {
               <span className="qa-icon">📤</span>
               <span className="qa-label">Upload Resume</span>
               <span className="qa-desc">Analyze a new resume</span>
-            </Link>
-            <Link to="/interview" className="quick-action-btn">
-              <span className="qa-icon">🎤</span>
-              <span className="qa-label">Start Interview</span>
-              <span className="qa-desc">Practice AI mock interview</span>
-            </Link>
-            <Link to="/coding" className="quick-action-btn">
-              <span className="qa-icon">💻</span>
-              <span className="qa-label">Coding Test</span>
-              <span className="qa-desc">Solve coding challenges</span>
             </Link>
           </div>
         </div>

@@ -32,8 +32,6 @@ export default function Navbar({ onToggleSidebar }) {
       '/dashboard': 'Dashboard',
       '/upload': 'Upload Resume',
       '/analysis': 'Resume Analysis',
-      '/interview': 'AI Interview',
-      '/coding': 'Coding Test',
     };
     return map[location.pathname] || 'Dashboard';
   };
@@ -43,8 +41,6 @@ export default function Navbar({ onToggleSidebar }) {
     if (location.pathname === '/dashboard') return null; // No back on dashboard
     if (location.pathname === '/upload') return '/dashboard';
     if (location.pathname.startsWith('/analysis')) return '/dashboard';
-    if (location.pathname === '/interview') return '/dashboard';
-    if (location.pathname === '/coding') return '/dashboard';
     return '/dashboard';
   };
 
@@ -103,15 +99,8 @@ export default function Navbar({ onToggleSidebar }) {
                 <div className="notif-item">
                   <span className="notif-icon">🎯</span>
                   <div>
-                    <p className="notif-text">New coding challenge available</p>
+                    <p className="notif-text">ATS score improved to 78%</p>
                     <span className="notif-time">1 hour ago</span>
-                  </div>
-                </div>
-                <div className="notif-item">
-                  <span className="notif-icon">✅</span>
-                  <div>
-                    <p className="notif-text">Interview score: 85/100</p>
-                    <span className="notif-time">3 hours ago</span>
                   </div>
                 </div>
               </div>

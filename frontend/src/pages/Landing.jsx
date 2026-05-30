@@ -14,14 +14,9 @@ const features = [
     description: 'Get your Applicant Tracking System compatibility score and optimize for automated screening.',
   },
   {
-    icon: '🎤',
-    title: 'AI Mock Interview',
-    description: 'Practice with AI-generated interview questions tailored to your experience and target role.',
-  },
-  {
-    icon: '💻',
-    title: 'Coding Tests',
-    description: 'Sharpen your coding skills with curated problems and real-time code execution.',
+    icon: '💼',
+    title: 'Job Description Match',
+    description: 'Match your resume against any job description to see fit percentage and get tailored improvement tips.',
   },
   {
     icon: '🧠',
@@ -33,13 +28,18 @@ const features = [
     title: 'Dashboard Analytics',
     description: 'Track your progress with beautiful charts and actionable insights over time.',
   },
+  {
+    icon: '💡',
+    title: 'Smart Suggestions',
+    description: 'Get AI-powered recommendations for alternative roles if your resume doesn\'t match the target job.',
+  },
 ];
 
 const stats = [
   { value: '10,000+', label: 'Resumes Analyzed' },
   { value: '95%', label: 'Accuracy Rate' },
   { value: '50+', label: 'Skill Categories' },
-  { value: '5,000+', label: 'Interviews Practiced' },
+  { value: '1,000+', label: 'Jobs Matched' },
 ];
 
 export default function Landing() {
@@ -85,7 +85,7 @@ export default function Landing() {
             <span className="hero-title-highlight">Resume Analyzer</span>
           </h1>
           <p className="hero-subtitle">
-            Get instant ATS scores, AI-driven resume analysis, mock interviews, and coding challenges — everything you need to land your dream job.
+            Get instant ATS scores, AI-driven resume analysis, and job description matching — everything you need to land your dream job.
           </p>
           <div className="hero-actions">
             <Link to={isAuthenticated ? '/upload' : '/register'} className="btn btn-primary btn-lg">

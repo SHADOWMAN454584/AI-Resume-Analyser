@@ -5,8 +5,6 @@ const navItems = [
   { path: '/dashboard', icon: '📊', label: 'Dashboard' },
   { path: '/upload', icon: '📤', label: 'Upload Resume' },
   { path: '/analysis', icon: '🔍', label: 'Analysis' },
-  { path: '/interview', icon: '🎤', label: 'AI Interview' },
-  { path: '/coding', icon: '💻', label: 'Coding Test' },
 ];
 
 export default function Sidebar({ isOpen, onClose }) {

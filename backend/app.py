@@ -41,22 +41,10 @@ def create_app(config_class=Config):
         print("Could not import resume_bp:", e)
         
     try:
-        from routes.interview import interview_bp
-        app.register_blueprint(interview_bp)
-    except ImportError as e:
-        print("Could not import interview_bp:", e)
-        
-    try:
         from routes.dashboard import dashboard_bp
         app.register_blueprint(dashboard_bp)
     except ImportError as e:
         print("Could not import dashboard_bp:", e)
-        
-    try:
-        from routes.coding import coding_bp
-        app.register_blueprint(coding_bp)
-    except ImportError as e:
-        print("Could not import coding_bp:", e)
 
     # Initialize database
     with app.app_context():

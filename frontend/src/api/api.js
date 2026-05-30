@@ -57,21 +57,7 @@ export const resumeAPI = {
   list: () => api.get('/resume/list'),
   getById: (id) => api.get(`/resume/${id}`),
   delete: (id) => api.delete(`/resume/${id}`),
-};
-
-// ─── Interview API ──────────────────────────────────────────
-export const interviewAPI = {
-  generate: (resumeId) => api.post('/interview/generate', { resume_id: resumeId }),
-  submit: (sessionId, answers) => api.post('/interview/submit', { session_id: sessionId, answers }),
-  getHistory: () => api.get('/interview/history'),
-};
-
-// ─── Coding API ─────────────────────────────────────────────
-export const codingAPI = {
-  getProblems: () => api.get('/coding/problems'),
-  runCode: (data) => api.post('/coding/run', data),
-  submitCode: (data) => api.post('/coding/submit', data),
-  getResults: (id) => api.get(`/coding/results/${id}`),
+  matchJob: (resumeId, jobDescription) => api.post('/resume/match-job', { resume_id: resumeId, job_description: jobDescription }),
 };
 
 // ─── Dashboard API ──────────────────────────────────────────

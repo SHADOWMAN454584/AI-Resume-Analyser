@@ -11,6 +11,7 @@ from services.pdf_parser import parse_pdf, extract_sections
 from services.nlp_engine import extract_skills, extract_entities, extract_experience_years
 from services.ats_scorer import calculate_ats_score
 from services.ai_analyzer import analyze_resume_with_ai
+from services.job_matcher import match_resume_to_job
 from utils.helpers import allowed_file, generate_unique_filename
 
 resume_bp = Blueprint('resume', __name__, url_prefix='/api/resume')
@@ -155,3 +156,45 @@ def delete_resume(resume_id):
     except Exception as e:
         db.session.rollback()
         return jsonify({'error': f'Failed to delete resume: {str(e)}'}), 500
+
+
+@resume_bp.route('/match-job', methods=['POST'])
+@jwt_required()
+def match_job_description():
+    """
+    Compare a resume against a user-provided job description.
+    Expects JSON body: { resume_id: int, job_description: str }
+    """
+    user_id = int(get_jwt_identity())
+    data = request.get_json()
+
+    if not data:
+        return jsonify({'error': 'Request body is required'}), 400
+
+    resume_id = data.get('resume_id')
+    job_description = data.get('job_description', '').strip()
+
+    if not resume_id:
+        return jsonify({'error': 'resume_id is required'}), 400
+    if not job_description:
+        return jsonify({'error': 'job_description is required'}), 400
+    if len(job_description) < 20:
+        return jsonify({'error': 'Job description is too short. Please provide a detailed description.'}), 400
+
+    # Fetch resume
+    resume = Resume.query.filter_by(id=resume_id, user_id=user_id).first()
+    if not resume:
+        return jsonify({'error': 'Resume not found'}), 404
+
+    if not resume.raw_text:
+        return jsonify({'error': 'Resume text not available. Please re-upload.'}), 422
+
+    try:
+        result = match_resume_to_job(resume.raw_text, job_description)
+        if 'error' in result:
+            return jsonify({'error': result['error'], 'details': result.get('details', '')}), 500
+
+        return jsonify({'match_result': result}), 200
+    except Exception as e:
+        return jsonify({'error': f'Job matching failed: {str(e)}'}), 500
+
