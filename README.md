@@ -1,6 +1,12 @@
 # 🚀 ResumeAI - AI-Powered Career Platform
 
-An intelligent platform that helps professionals optimize their resumes and prepare for interviews using AI-driven analysis and real-time feedback.
+An intelligent platform that helps professionals optimize their resumes and discover job gaps using AI-driven analysis and real-time feedback.
+
+## 🌐 Live Deployment
+
+- **Deployment Server**: [https://resumeai-backend-c3q4.onrender.com](https://resumeai-backend-c3q4.onrender.com)
+
+> **⚠️ Note:** The backend is deployed on Render's free tier, which spins down after periods of inactivity. **It may take up to 5 minutes to start the server** upon your first request. Please be patient!
 
 ## ✨ Features
 
@@ -11,15 +17,6 @@ An intelligent platform that helps professionals optimize their resumes and prep
 - **Skill Extraction**: Automatically detect and categorize 300+ technical skills using spaCy NLP
 - **Job Matching**: Compare your resume against specific job descriptions for match percentages and gap analysis
 - **Actionable Recommendations**: AI-generated improvement suggestions specific to your resume
-
-### 🎤 Mock Interview
-- **AI-Generated Questions**: Interview questions tailored to your experience and target role
-- **Real-time Feedback**: AI analysis of your responses with detailed feedback
-
-### 💻 Coding Challenges
-- **Problem Library**: Curated coding problems across different difficulty levels
-- **Real-time Code Execution**: Run and test your code instantly
-- **Performance Metrics**: Track your progress and benchmark against others
 
 ### 📊 Dashboard Analytics
 - **Comprehensive Statistics**: Track your ATS scores, skills, and progress over time
@@ -63,23 +60,18 @@ ResumeAI/
 │   ├── models/
 │   │   ├── __init__.py
 │   │   ├── resume.py          # Resume SQLAlchemy model
-│   │   ├── user.py            # User model
-│   │   └── interview.py        # Interview session model
+│   │   └── user.py            # User model
 │   ├── routes/
 │   │   ├── __init__.py
 │   │   ├── auth.py            # Authentication endpoints
 │   │   ├── resume.py          # Resume upload & analysis endpoints
-│   │   ├── dashboard.py        # Dashboard statistics endpoints
-│   │   ├── interview.py        # Interview endpoints
-│   │   └── coding.py          # Coding challenge endpoints
+│   │   └── dashboard.py        # Dashboard statistics endpoints
 │   ├── services/
 │   │   ├── __init__.py
 │   │   ├── ai_analyzer.py     # Groq AI analysis service
 │   │   ├── pdf_parser.py      # PDF extraction and section parsing
 │   │   ├── nlp_engine.py      # Skill & entity extraction
-│   │   ├── ats_scorer.py      # ATS score calculation
-│   │   ├── code_executor.py   # Code execution service
-│   │   └── question_generator.py # Interview question generation
+│   │   └── ats_scorer.py      # ATS score calculation
 │   ├── utils/
 │   │   ├── __init__.py
 │   │   └── helpers.py         # Utility functions
@@ -99,10 +91,8 @@ ResumeAI/
 │   │   ├── context/
 │   │   │   └── AuthContext.jsx # Authentication context
 │   │   ├── components/
-│   │   │   ├── CodeEditor.jsx/css
 │   │   │   ├── FileUpload.jsx/css
 │   │   │   ├── Navbar.jsx/css
-│   │   │   ├── QuestionCard.jsx/css
 │   │   │   ├── ScoreGauge.jsx/css
 │   │   │   ├── Sidebar.jsx/css
 │   │   │   ├── SkillBadge.jsx/css
@@ -113,8 +103,7 @@ ResumeAI/
 │   │       ├── Login.jsx/css
 │   │       ├── Register.jsx/css
 │   │       ├── ResumeAnalysis.jsx/css
-│   │       ├── ResumeUpload.jsx/css
-│   │       └── Interview.jsx/css
+│   │       └── ResumeUpload.jsx/css
 
 └── README.md                  # This file
 ```
@@ -242,8 +231,6 @@ npm run build
 - Responsive UI with modern design
 
 🚧 **In Development**
-- Mock interview with AI questions
-- Coding challenge execution and evaluation
 - Real-time progress tracking
 - Advanced analytics and trends
 
